@@ -81,7 +81,14 @@ public function getData()
 {
     $data['comData'] = Company::all();
 
-    return view('/company', $data);
+    return view('company', $data);
+}
+
+public function AssignUser()
+{
+    // $data['comData'] = Company::all();
+
+    // return view('/company', $data);
 }
 
 public function getUserData()

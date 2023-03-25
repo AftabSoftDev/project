@@ -26,13 +26,14 @@ Route::view('/company','company');
 Route::view('/edit','edit');
 Route::view('/table','table');
 
-Route::get('/getData', [UserData::class, 'getData']);
+Route::get('/getData', [UserData::class, 'getData'])->name('company1');
+// Route::get('/AssignUser', [UserData::class, 'AssignUser'])->name('assinguser');
 Route::post('/comGetUpdate', [UserData::class, 'comGetUpdate']);
 Route::post('/ComUpdateSave', [UserData::class, 'ComUpdateSave']);
 Route::get('/comDelete/{id}', [UserData::class, 'comDelete']);
 
 
-Route::get('/getUserData', [UserData::class, 'getUserData']);
+Route::get('/getUserData', [UserData::class, 'getUserData'])->name('getuserdata');
 Route::post('/userGetUpdate', [UserData::class, 'userGetUpdate']);
 Route::post('/UpdateSave', [UserData::class, 'UpdateSave']);
 Route::get('/userDelete/{id}', [UserData::class, 'deleteUserData']);

@@ -16,20 +16,13 @@
         </div>
     </form>
 
-    <a href="/home"></a>
-    <table class="table table-bordered" id="myTable">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Add Users</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody >
+        <div class="container">
 
-        <?php
+            <form id="AssigUser">
+                <div class="row">
+
+        <label><b>Add Users to "Company 1"</b></label>
+      <?php
       $num=1;
 
    foreach ($comData as $info) {
@@ -37,17 +30,18 @@
 
 
   ?>
-        <th scope="row"><?php echo $num; ?></th>
-        <td><?php echo $info->name; ?></td>
-        <td>
-        <a href='/delete/<?php //echo $info->id; ?>'><button type="button"  class="btn btn-primary">Add User</button></a>
-        </td>
-        <td>
-            <a href='#' data-edit_id="{{ $info->id; }}"><button type="button" class="btn btn-dark updateUser">Edit</button></a>
-  </td>
-  <td>
-    <a href='/comDelete/{{$info->id;}}'><button type="button"  class="btn btn-danger">Delete</button></a>
-    </td>
+
+
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="{{ $info->id; }}">
+                    <label class="form-check-label" for="{{ $info->id; }}">
+                        {{ $info->name; }}
+                    </label>
+                  </div>
+
+
+
 
         <?php
 
@@ -56,44 +50,13 @@
      }//
         ?>
 
-    </tbody>
-  </table>
-  <form id="ComUpdate"  style="display:none;">
-    <div class="row">
-
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary Saveupdate">Update Company</button>
-        </div>
-        <div class="col-md-2">
-            <input type="text" class="form-control" name="nameup" required id="nameup" />
-            <input type="text" class="form-control" name="id_update" hidden required id="id_update" />
-        </div>
-
-    </div>
-</form>
-<div class="container">
-
-<form id="AssigUser">
-    <div class="row">
-<label><b>Add Users to "Company 1"</b></label>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Default checkbox
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-            <label class="form-check-label" for="defaultCheck2">
-              Disabled checkbox
-            </label>
-          </div>
-
-    </div>
+</div>
 </form>
 </div>
 
       </div>
+
+
 
       <script>
       $(document).ready(function() {
@@ -200,6 +163,7 @@ $('.Saveupdate').on('click', function() {
 
 });
 });
+
 
 $(document).ready(function() {
 $('.updateUser').on('click', function() {
