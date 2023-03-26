@@ -15,35 +15,35 @@ use App\Http\Controllers\UserData;
 */
 
 
+// Default Route
+Route::get('/', [UserData::class, 'getUserData'])->name('getuserdata');
 
-Route::view('/login','login')->name('log');
-Route::post('/loginAuth', [FormController::class, 'login']);
 
-Route::view('/home','index');
-Route::view('/company','company');
-Route::view('/assignuser','assignuser');
-Route::view('/edit','edit');
-Route::view('/table','table');
-
+// Comapany Details Route
+Route::post('/AddData', [UserData::class, 'storeUser']);
+Route::post('/storeCompany', [UserData::class, 'storeCompany']);
 Route::get('/getData', [UserData::class, 'getData']);
-Route::get('/AssignUser/{id}', [UserData::class, 'AssignUser']);
-Route::post('/AssigUser', [UserData::class, 'AssigUser']);
 Route::post('/comGetUpdate', [UserData::class, 'comGetUpdate']);
 Route::post('/ComUpdateSave', [UserData::class, 'ComUpdateSave']);
 Route::get('/comDelete/{id}', [UserData::class, 'comDelete']);
+Route::view('/company','company');
 
 
-Route::get('/', [UserData::class, 'getUserData'])->name('getuserdata');
+// User Details Route
 Route::post('/userGetUpdate', [UserData::class, 'userGetUpdate']);
 Route::post('/UpdateSave', [UserData::class, 'UpdateSave']);
 Route::get('/userDelete/{id}', [UserData::class, 'deleteUserData']);
-
-Route::post('/AddData', [UserData::class, 'storeUser']);
-Route::post('/storeCompany', [UserData::class, 'storeCompany']);
-Route::get('/delete/{id}', [FormController::class, 'delete']);
-Route::get('/editcont/{id}', [FormController::class, 'edit']);
+Route::view('/home','index');
 
 
 
+// Assign Users Route
+Route::get('/AssignUser/{id}', [UserData::class, 'AssignUser']);
+Route::post('/AssigUser', [UserData::class, 'AssigUser']);
+Route::view('/assignuser','assignuser');
 
-Route::get('/logout', [FormController::class, 'logout']);
+
+
+
+
+

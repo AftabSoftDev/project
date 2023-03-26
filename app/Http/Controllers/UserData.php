@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UserData extends Controller
 {
+
+    // Store New User
     public function storeUser(Request $req)
     {
         if ($req->ajax() && $req->isMethod('post')) {
@@ -45,6 +47,8 @@ class UserData extends Controller
         echo json_encode(array('msg' => 404));
     }
 }
+
+// Store Company Details
 
 public function storeCompany(Request $req)
     {
@@ -79,6 +83,7 @@ public function storeCompany(Request $req)
     }
 }
 
+// Fetch Company Data
 public function getData()
 {
     $data['comData'] = Company::all();
@@ -86,6 +91,8 @@ public function getData()
     return view('company', $data);
 }
 
+
+// Assign New user
 public function AssignUser($id)
 {
     $data['comData'] = Company::find($id);
@@ -94,6 +101,7 @@ public function AssignUser($id)
     return view('assignuser', $data);
 }
 
+// Fetch User Data
 public function getUserData()
 {
     $data['userData'] = User::all();
@@ -101,7 +109,7 @@ public function getUserData()
     return view('/index', $data);
 }
 
-
+// edit User Details
 public function userGetUpdate(Request $req)
 {
     $id= $req->input('id');
@@ -111,7 +119,7 @@ public function userGetUpdate(Request $req)
 
 }
 
-
+// Delete User Details
 public function deleteUserData($id)
 {
     $delete = User::find($id)->delete();
@@ -125,6 +133,8 @@ public function deleteUserData($id)
     }
 }
 
+
+// Delete Company Details
 public function comDelete($id)
 {
     $delete = Company::find($id)->delete();
@@ -138,6 +148,8 @@ public function comDelete($id)
     }
 }
 
+
+// Update User Details
 public function UpdateSave(Request $req)
 {
     $id = $req->input('id');
@@ -153,6 +165,8 @@ public function UpdateSave(Request $req)
     }
 }
 
+
+// edit Company Details
 public function comGetUpdate(Request $req)
 {
     $id= $req->input('id');
@@ -162,6 +176,7 @@ public function comGetUpdate(Request $req)
 
 }
 
+// Update Company Details
 public function ComUpdateSave(Request $req)
 {
     $id = $req->input('id');
@@ -176,6 +191,8 @@ public function ComUpdateSave(Request $req)
         echo json_encode(array('msg' => 201));
     }
 }
+
+// Assign User
 public function AssigUser(Request $req)
 {
     if ($req->isMethod('post')) {
