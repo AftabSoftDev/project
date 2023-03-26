@@ -14,9 +14,7 @@ use App\Http\Controllers\UserData;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+
 
 Route::view('/login','login')->name('log');
 Route::post('/loginAuth', [FormController::class, 'login']);
