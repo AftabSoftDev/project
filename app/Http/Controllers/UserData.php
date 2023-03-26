@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Company;
+use App\Models\user_assgin;
+
 
 
 use Illuminate\Support\Facades\Validator;
@@ -84,11 +86,12 @@ public function getData()
     return view('company', $data);
 }
 
-public function AssignUser()
+public function AssignUser($id)
 {
-    // $data['comData'] = Company::all();
+    $data['comData'] = Company::find($id);
+    $data['userData'] = User::all();
 
-    // return view('/company', $data);
+    return view('assignuser', $data);
 }
 
 public function getUserData()
@@ -173,9 +176,48 @@ public function ComUpdateSave(Request $req)
         echo json_encode(array('msg' => 201));
     }
 }
+public function AssigUser(Request $req)
+{
+    if ($req->isMethod('post')) {
+        $user_id[]= $req->input('user_id');
+        $com_id= $req->input('com_id');
+
+        // dd($user_id);
+
+        $validator = Validator::make(
+            $req->all(),
+            [
+                'user_id'   => 'required',
+            ],
+        );
 
 
+    $data =$user_id[0];
 
+        if ($validator->passes()) {
+
+
+            foreach ($data as $user_id) {
+                $db = New user_assgin;
+                $db->user_id = $user_id;
+                $db->com_id = $com_id;
+                $db->save();
+
+            }
+            $data['comData'] = Company::all();
+            if ($db) {
+
+                // session()->flash('msg', 'Successfully Assgined');
+                return view('company', $data)->with('msg', 'Users has been Assign successfully.');
+
+            }else{
+
+                return view('company', $data)->with('msg', 'Users Unable to Assign');;
+            }
+
+}
+}
+}
 
 
 

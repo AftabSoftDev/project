@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+    @if (session('msg'))
+    <div class="alert alert-success">
+        {{ session('msg') }}
+    </div>
+@endif
+{{ session('msg') }}
     <form id="UserData">
         <div class="row">
 
@@ -22,7 +28,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Company Name</th>
-        <th scope="col">Add Users</th>
+        <th scope="col">Assign Users</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
@@ -40,7 +46,7 @@
         <th scope="row"><?php echo $num; ?></th>
         <td><?php echo $info->name; ?></td>
         <td>
-        <a href='/delete/<?php //echo $info->id; ?>'><button type="button"  class="btn btn-primary">Add User</button></a>
+        <a href='/AssignUser/{{ $info->id; }}'><button type="button"  class="btn btn-primary">Assign Users</button></a>
         </td>
         <td>
             <a href='#' data-edit_id="{{ $info->id; }}"><button type="button" class="btn btn-dark updateUser">Edit</button></a>

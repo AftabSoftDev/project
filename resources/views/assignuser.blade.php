@@ -2,30 +2,18 @@
 
 @section('content')
 <div class="container">
-    <form id="UserData">
-        <div class="row">
 
-            <div class="col-md-2">
-                <button type="button" class="btn btn-success submit">Add New Company</button>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" name="co_name" required id="co_name" />
-                <input type="hidden"  name="csrf" id="csrf" value="{{Session::token()}}">
-            </div>
-
-        </div>
-    </form>
 
         <div class="container">
 
-            <form id="AssigUser">
+            <form action="/AssigUser" method="POST">
                 <div class="row">
-
-        <label><b>Add Users to "Company 1"</b></label>
+                    @csrf
+        <label><b>Add Users to "{{ $comData->name; }}"</b></label>
       <?php
       $num=1;
 
-   foreach ($comData as $info) {
+   foreach ($userData as $info) {
       echo "<tr>";
 
 
@@ -34,7 +22,7 @@
 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="{{ $info->id; }}">
+                    <input class="form-check-input" type="checkbox" name="user_id[]" value="{{ $info->id; }}">
                     <label class="form-check-label" for="{{ $info->id; }}">
                         {{ $info->name; }}
                     </label>
@@ -51,6 +39,9 @@
         ?>
 
 </div>
+<input type="text" name="com_id" value="{{ $comData->id; }}" hidden />
+<button type="submit" class="btn btn-success assign_submit">Assign User</button>
+<a href="/getData"><button type="button" class="btn btn-dark assign_submit">Back</button></a>
 </form>
 </div>
 

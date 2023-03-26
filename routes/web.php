@@ -23,11 +23,13 @@ Route::post('/loginAuth', [FormController::class, 'login']);
 
 Route::view('/home','index');
 Route::view('/company','company');
+Route::view('/assignuser','assignuser');
 Route::view('/edit','edit');
 Route::view('/table','table');
 
-Route::get('/getData', [UserData::class, 'getData'])->name('company1');
-// Route::get('/AssignUser', [UserData::class, 'AssignUser'])->name('assinguser');
+Route::get('/getData', [UserData::class, 'getData']);
+Route::get('/AssignUser/{id}', [UserData::class, 'AssignUser']);
+Route::post('/AssigUser', [UserData::class, 'AssigUser']);
 Route::post('/comGetUpdate', [UserData::class, 'comGetUpdate']);
 Route::post('/ComUpdateSave', [UserData::class, 'ComUpdateSave']);
 Route::get('/comDelete/{id}', [UserData::class, 'comDelete']);
