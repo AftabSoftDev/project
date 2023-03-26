@@ -8,3 +8,8 @@ CMD- php artisan migrate
 CMD- php artisan serve
 
 
+<!-- To Upate Composer (optional) -->
+CMD- composer update
+
+
+
