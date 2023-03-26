@@ -15,7 +15,7 @@
 
         </div>
     </form>
-
+    <a href="/getData" style="float:right;margin:1%;"><button type="button" class="btn btn-primary">Add Company</button></a>
 
     <a href="/home"></a>
     <table class="table table-bordered" id="myTable">
@@ -68,9 +68,7 @@
 
     </div>
 </form>
-<div class="col-md-2">
-                <a href="/getData"><button type="button" class="btn btn-primary">Add Company</button></a>
-            </div>
+
 
       </div>
 
@@ -160,39 +158,7 @@ $('.Saveupdate').on('click', function() {
 });
 });
 
-  $(document).ready(function() {
 
-    $('#userDelete').on('click', function() {
-      var idArray=  $('#user_id').val();
-      $.each(idArray, function(index, id) {
-      console.log(idArray);
-
-          $.ajax({
-              url: "/userDelete",
-              type: "post",
-              dataType: "json",
-              data: {
-                _token: $("#csrf").val(),
-                user_id: id
-              },
-              async: true,
-              success: function(data){
-                var dataResult = JSON.parse(data);
-            if (dataResult.msg==200) {
-                    alert('Successfully Deleted !!');
-                    $('#userDelete').selectpicker('refresh');
-                // window.location="/home";
-
-                }else if(dataResult.msg==201){
-                        alert('Unble to Delete !!');
-                  }
-
-              }
-          });
-        });
-
-  });
-});
 
 $(document).ready(function() {
 $('.updateUser').on('click', function() {

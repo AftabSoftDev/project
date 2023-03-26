@@ -14,9 +14,9 @@ use App\Http\Controllers\UserData;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 Route::view('/login','login')->name('log');
 Route::post('/loginAuth', [FormController::class, 'login']);
@@ -35,7 +35,7 @@ Route::post('/ComUpdateSave', [UserData::class, 'ComUpdateSave']);
 Route::get('/comDelete/{id}', [UserData::class, 'comDelete']);
 
 
-Route::get('/getUserData', [UserData::class, 'getUserData'])->name('getuserdata');
+Route::get('/', [UserData::class, 'getUserData'])->name('getuserdata');
 Route::post('/userGetUpdate', [UserData::class, 'userGetUpdate']);
 Route::post('/UpdateSave', [UserData::class, 'UpdateSave']);
 Route::get('/userDelete/{id}', [UserData::class, 'deleteUserData']);

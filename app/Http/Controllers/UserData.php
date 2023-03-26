@@ -207,12 +207,12 @@ public function AssigUser(Request $req)
             $data['comData'] = Company::all();
             if ($db) {
 
-                // session()->flash('msg', 'Successfully Assgined');
-                return view('company', $data)->with('msg', 'Users has been Assign successfully.');
+                session()->flash('msg', 'Successfully Assigned');
+                return view('company', $data);
 
             }else{
-
-                return view('company', $data)->with('msg', 'Users Unable to Assign');;
+                session()->flash('msg', 'Users Unable to Assigned');
+                return view('company', $data);
             }
 
 }

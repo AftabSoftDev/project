@@ -7,7 +7,6 @@
         {{ session('msg') }}
     </div>
 @endif
-{{ session('msg') }}
     <form id="UserData">
         <div class="row">
 
@@ -20,6 +19,7 @@
             </div>
 
         </div>
+        <a href="/" style="float:right;margin:1%;"><button type="button" class="btn btn-primary">Add New Users</button></a>
     </form>
 
     <a href="/home"></a>
@@ -64,6 +64,7 @@
 
     </tbody>
   </table>
+
   <form id="ComUpdate"  style="display:none;">
     <div class="row">
 
@@ -123,26 +124,7 @@ $('.submit').on('click', function() {
 });
 });
 
-  $(document).ready(function() {
 
-    $('#delete').on('click', function() {
-      var del_id = $('#del_id').val();
-          $.ajax({
-              url: "/comDelete",
-              type: "POST",
-              data: {
-                  _token: $("#csrf").val(),
-                  id: del_id
-
-              },
-              success: function(dataResult){
-                  console.log(dataResult);
-                  window.location="http://localhost:8000/show";
-              }
-          });
-
-  });
-});
 
 $(document).ready(function() {
 
